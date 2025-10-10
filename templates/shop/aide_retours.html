@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Aide - Retours</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"><a href="{% url 'shop:aide' %}">Aide</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Retours</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Content Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Politique de retour et remboursement</h2>
+                <p class="mb-4">Découvrez notre politique de retour flexible et nos procédures de remboursement.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Poser une question à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Return Policy -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Conditions de retour</h3>
+                
+                <div class="row">
+                    <!-- Return Period -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-calendar-alt text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Délai de retour</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>14 jours à partir de la réception</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Produits non utilisés</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Emballage d'origine conservé</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Étiquettes et tickets inclus</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Return Process -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-undo text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Processus de retour</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Demande via votre compte</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Confirmation par email</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Envoi du colis</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Remboursement sous 5 jours</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Steps -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Comment retourner un produit</h3>
+                
+                <div class="row">
+                    <!-- Step 1 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">1</span>
+                                </div>
+                                <h5>Demander le retour</h5>
+                                <p class="text-muted">Connectez-vous et demandez un retour depuis votre compte.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">2</span>
+                                </div>
+                                <h5>Préparer le colis</h5>
+                                <p class="text-muted">Remettez le produit dans son emballage d'origine.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">3</span>
+                                </div>
+                                <h5>Envoyer le colis</h5>
+                                <p class="text-muted">Utilisez l'étiquette de retour fournie.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">4</span>
+                                </div>
+                                <h5>Recevoir le remboursement</h5>
+                                <p class="text-muted">Remboursement sous 5 jours ouvrés.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refund Methods -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Modes de remboursement</h3>
+                
+                <div class="row">
+                    <!-- Original Payment -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-credit-card text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Moyen de paiement original</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Remboursement automatique</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Délai : 3-5 jours ouvrés</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Aucun frais supplémentaire</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Confirmation par email</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Store Credit -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-gift text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Crédit boutique</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Crédit immédiat</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Valable 12 mois</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Bonus de 5%</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Utilisable sur tout le site</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions fréquentes sur les retours</h3>
+                
+                <div class="accordion" id="retoursAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Quels produits ne peuvent pas être retournés ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#retoursAccordion">
+                            <div class="card-body">
+                                Les produits personnalisés, les articles de lingerie, les produits cosmétiques ouverts et les articles en promotion finale ne peuvent pas être retournés.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Qui paie les frais de retour ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#retoursAccordion">
+                            <div class="card-body">
+                                Les frais de retour sont à notre charge si le produit est défectueux ou ne correspond pas à la commande. Sinon, ils sont déduits du remboursement.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Combien de temps pour recevoir mon remboursement ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#retoursAccordion">
+                            <div class="card-body">
+                                Une fois le produit reçu et vérifié, le remboursement est effectué sous 3-5 jours ouvrés selon votre moyen de paiement.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">retours@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens utiles</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_commande' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Commandes
+                        </a>
+                        <a href="{% url 'shop:aide_livraison' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </a>
+                        <a href="{% url 'shop:aide_paiement' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-credit-card mr-2"></i>Paiement
+                        </a>
+                        <a href="{% url 'shop:aide_compte' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-user mr-2"></i>Mon compte
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Tips -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Conseils pour les retours</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Conservez l'emballage d'origine</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Ne retirez pas les étiquettes</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Retournez rapidement</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Joignez le ticket de caisse</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Content End -->
+
+{% endblock content %}

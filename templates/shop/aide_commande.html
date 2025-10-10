@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Aide - Commandes</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"><a href="{% url 'shop:aide' %}">Aide</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Commandes</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Content Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Comment passer une commande sur TradiShop ?</h2>
+                <p class="mb-4">Suivez ce guide étape par étape pour passer votre commande en toute simplicité.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Poser une question à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Steps Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Étapes pour passer une commande</h3>
+                
+                <div class="row">
+                    <!-- Step 1 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">1</span>
+                                </div>
+                                <h5>Parcourir les produits</h5>
+                                <p class="text-muted">Explorez notre boutique et découvrez nos produits traditionnels africains.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">2</span>
+                                </div>
+                                <h5>Ajouter au panier</h5>
+                                <p class="text-muted">Cliquez sur "Ajouter au panier" pour les produits qui vous intéressent.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">3</span>
+                                </div>
+                                <h5>Vérifier le panier</h5>
+                                <p class="text-muted">Consultez votre panier et ajustez les quantités si nécessaire.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">4</span>
+                                </div>
+                                <h5>Procéder au paiement</h5>
+                                <p class="text-muted">Remplissez vos informations et choisissez votre mode de paiement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions fréquentes sur les commandes</h3>
+                
+                <div class="accordion" id="commandeAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Puis-je modifier ma commande après l'avoir passée ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#commandeAccordion">
+                            <div class="card-body">
+                                Vous pouvez modifier votre commande tant qu'elle n'a pas été expédiée. Contactez notre service client pour toute modification.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Comment suivre ma commande ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#commandeAccordion">
+                            <div class="card-body">
+                                Vous recevrez un email de confirmation avec un numéro de suivi. Vous pouvez aussi consulter votre compte pour suivre l'état de votre commande.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Que faire si un produit est indisponible ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#commandeAccordion">
+                            <div class="card-body">
+                                Si un produit devient indisponible après votre commande, nous vous contacterons pour vous proposer une alternative ou un remboursement.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">commandes@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens utiles</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_livraison' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </a>
+                        <a href="{% url 'shop:aide_paiement' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-credit-card mr-2"></i>Paiement
+                        </a>
+                        <a href="{% url 'shop:aide_retours' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-undo mr-2"></i>Retours
+                        </a>
+                        <a href="{% url 'shop:aide_compte' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-user mr-2"></i>Mon compte
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Actions rapides</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'shop:shop' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-shopping-bag mr-2"></i>Voir la boutique
+                        </a>
+                        <a href="{% url 'shop:panier' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-shopping-cart mr-2"></i>Mon panier
+                        </a>
+                        <button class="btn btn-outline-primary" onclick="openChatbot()">
+                            <i class="fas fa-comments mr-2"></i>Assistant virtuel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Content End -->
+
+{% endblock content %}

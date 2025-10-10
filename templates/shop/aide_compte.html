@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Aide - Mon Compte</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"><a href="{% url 'shop:aide' %}">Aide</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Mon Compte</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Content Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Gestion de votre compte TradiShop</h2>
+                <p class="mb-4">Apprenez à créer, gérer et sécuriser votre compte utilisateur sur TradiShop.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Poser une question à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Features -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Fonctionnalités de votre compte</h3>
+                
+                <div class="row">
+                    <!-- Profile Management -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-user-edit text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Gestion du profil</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Modifier vos informations</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Changer votre mot de passe</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Mettre à jour vos préférences</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Gérer vos notifications</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order History -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-history text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Historique des commandes</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Voir toutes vos commandes</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Suivre l'état de livraison</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Télécharger les factures</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Commander à nouveau</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Book -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-map-marker-alt text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Carnet d'adresses</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Ajouter des adresses</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Modifier les adresses</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Définir l'adresse par défaut</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Supprimer les adresses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wishlist -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-heart text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Liste de souhaits</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Sauvegarder vos favoris</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Partager vos listes</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Recevoir des alertes prix</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Ajouter au panier rapidement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Creation -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Créer un compte</h3>
+                
+                <div class="row">
+                    <!-- Step 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">1</span>
+                                </div>
+                                <h5>Cliquer sur "Connexion"</h5>
+                                <p class="text-muted">Accédez à la page de connexion depuis le menu principal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">2</span>
+                                </div>
+                                <h5>Choisir "Inscription"</h5>
+                                <p class="text-muted">Sélectionnez l'option d'inscription pour créer un nouveau compte.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">3</span>
+                                </div>
+                                <h5>Remplir le formulaire</h5>
+                                <p class="text-muted">Saisissez vos informations personnelles et validez votre compte.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions fréquentes sur le compte</h3>
+                
+                <div class="accordion" id="compteAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Comment réinitialiser mon mot de passe ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#compteAccordion">
+                            <div class="card-body">
+                                Cliquez sur "Mot de passe oublié" sur la page de connexion, saisissez votre email et suivez les instructions reçues.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Puis-je supprimer mon compte ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#compteAccordion">
+                            <div class="card-body">
+                                Oui, vous pouvez demander la suppression de votre compte en contactant notre service client. Toutes vos données seront supprimées.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Comment modifier mes informations personnelles ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#compteAccordion">
+                            <div class="card-body">
+                                Connectez-vous à votre compte, allez dans "Mon profil" et modifiez les informations souhaitées. N'oubliez pas de sauvegarder.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">compte@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens utiles</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_commande' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Commandes
+                        </a>
+                        <a href="{% url 'shop:aide_livraison' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </a>
+                        <a href="{% url 'shop:aide_paiement' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-credit-card mr-2"></i>Paiement
+                        </a>
+                        <a href="{% url 'shop:aide_retours' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-undo mr-2"></i>Retours
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tips -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Conseils de sécurité</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-shield-alt text-success mr-2"></i>Utilisez un mot de passe fort</li>
+                        <li><i class="fas fa-shield-alt text-success mr-2"></i>Ne partagez jamais vos identifiants</li>
+                        <li><i class="fas fa-shield-alt text-success mr-2"></i>Déconnectez-vous après utilisation</li>
+                        <li><i class="fas fa-shield-alt text-success mr-2"></i>Mettez à jour vos informations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Content End -->
+
+{% endblock content %}

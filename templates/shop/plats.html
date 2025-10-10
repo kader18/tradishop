@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <button class="btn btn-warning" onclick="hideshow()">
+                Voir le programme de la semaine 
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Breadcrumb Start -->
+<div class="container">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'shop:accueil' %}">Acceuil</a>
+                <span class="breadcrumb-item active">Plats a l'africaine</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Product Start -->
+<div class="container" style="width: 100%;">
+    <div>
+        {% for programmes in programme  %}
+            <div class="row px-xl-5" id="main">
+                <img src="{{programmes.imageUrlProgramme}}" alt="">
+            </div>
+        {% endfor  %}
+    </div>
+    <div class="row px-xl-2 pt-5">
+        <div class="col-lg-9 col-md-8">
+            <div class="row pb-3">
+                {% for plat in plats  %}
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                        <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="{{ plat.imageUrl }}" alt="">
+                            </div>
+                        
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate">{{plat.name}}</a>
+                                <p class="d-flex align-items-center justify-content-center mt-2">{{ plat.description }}</p>
+                                <div class="d-flex justify-content-center mt-2">
+                                    <h5 class="bg-warning p-2" style="border-radius: 10px;">{{plat.price|floatformat:2}} FCFA</h5>
+                                </div>
+
+                            
+                                <a class=" d-flex btn btn-success btn-lg rounded-5 justify-content-center mt-2" href="https://wa.me/0779980235">
+                                Commandez ici</span></a>
+                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                <div class="col-12">
+                    <nav>
+                        <div class="row mt-5">
+                            <div class="col-md-3 offset-md-4">
+                                <ul>
+                
+                                    {% if plats.has_other_pages %}
+                
+                                        <div class="btn-group" role="group" aria-label="Item pargination">
+                                    {% if plats.has_previous %}
+                                
+                                            <a href="?page={{ plats.previous_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+                                    
+                                    
+                                    {% endif %}
+                    
+                                    {% for page_number in plat.paginator.page_range %}
+                                    
+                                        {% if plats.number == page_number %}
+                                        <button class="btn btn-primary active">
+                                            <span>{{ page_number }}</span>
+                                        </button>
+                                        
+                                        
+                                        {% else %}
+                                        
+                                            <a href="?page={{page_number}}" class="btn btn-outline-primary">
+                                                {{page_number}}
+                                            </a>
+                                        
+                    
+                                        {% endif %}
+                    
+                                    {% endfor %}
+                    
+                                    {% if plat.has_next %}
+                                    
+                                        <a href="?page={{ plat.next_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+                                    
+                    
+                                    {% endif %}
+                                    </div>
+                                
+                                {% endif %}
+                
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Shop Product End -->
+
+<script>
+
+    var div = document.getElementById('main');
+    var display = 0;
+
+    function hideshow(){
+        if(display == 1){
+           div.style.display = 'block';
+           display = 0;
+        }
+        else
+        {
+           div.style.display = 'none';
+           display = 1;
+        }
+    }
+</script>
+
+
+{% endblock content %}

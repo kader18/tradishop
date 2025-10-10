@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Boutique debut -->
+    <section class="shop" id="shop">
+        <div class="container">
+            {% for produit in produits  %}
+            <div class="box">
+                 <img src="{{ produit.imageUrl }}" alt="">
+                 <h4>{{produit.name}}</h4>
+                 <h5>{{produit.price|floatformat:2}} FCFA</h5>
+                 <div class="cart">
+                   <a class="add-btn update-panier" data-produit="{{produit.pk}}" data-action="add"><i class="bx bx-cart"></i></a>
+                   <a class="add-btn toggle-favoris" data-produit="{{produit.pk}}" href="#"><i class="far fa-heart"></i></a>
+                 </div>
+                 <hr>
+                <button style="width: 100%;" class="btn btn-outline-secondary add-btn update-panier" data-produit="{{produit.pk}}" data-action="add">
+                Ajouter au panier</button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+    <!-- Boutique fin -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Ajouter le token CSRF
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getCookie('csrftoken');
+
+            // Gestionnaire d'événements pour le clic sur le bouton "Ajouter au panier"
+            $(".update-panier").on("click", function(event){
+                event.preventDefault();
+                var produitId = $(this).data('produit');
+                var action = $(this).data('action');
+                var $btn = $(this);
+                
+                $.ajax({
+                    url: '{% url "shop:update_article" %}',
+                    type: 'POST',
+                    data: {
+                        'produit_id': produitId,
+                        'action': action,
+                        'csrfmiddlewaretoken': csrftoken
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $btn.find('i').removeClass('bx-cart').addClass('fa-check');
+                        setTimeout(function(){
+                            $btn.find('i').removeClass('fa-check').addClass('bx-cart');
+                        }, 1000);
+                    },
+                    error: function() {
+                        alert('Erreur lors de l\'ajout au panier');
+                    }
+                });
+            });
+
+            // Gestion du toggle des favoris
+            $('.toggle-favoris').on('click', function(e){
+                e.preventDefault();
+                var produitId = $(this).data('produit');
+                var $btn = $(this);
+                var $icon = $btn.find('i');
+                
+                $.ajax({
+                    url: '{% url "shop:toggle_favoris" %}',
+                    type: 'POST',
+                    data: {
+                        'produit_id': produitId,
+                        'csrfmiddlewaretoken': csrftoken
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.includes('ajouté')) {
+                            $icon.removeClass('far').addClass('fas text-danger');
+                        } else if (data.includes('retiré')) {
+                            $icon.removeClass('fas text-danger').addClass('far');
+                        } else if (data.includes('connecter')) {
+                            alert('Veuillez vous connecter pour ajouter aux favoris');
+                            window.location.href = '{% url "shop:login" %}';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Erreur AJAX:', xhr.responseText);
+                        alert('Erreur lors de la mise à jour des favoris: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock content %}

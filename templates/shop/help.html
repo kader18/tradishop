@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<br>
+
+<!-- Breadcrumb Start -->
+<div class="container">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'shop:accueil' %}">Acceuil</a>
+                <span class="breadcrumb-item active">Aide</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Product Start -->
+<div class="container" style="width: 100%;">
+
+</div>
+
+<!-- Shop Product End -->
+
+
+{% endblock content %}

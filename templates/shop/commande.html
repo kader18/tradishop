@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<br>
+
+<!-- Breadcrumb Start -->
+<div class="container">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="{% url 'shop:shop' %}">Boutique</a>
+                <a class="breadcrumb-item text-dark" href="{% url 'shop:panier' %}">Panier</a>
+                <span class="breadcrumb-item active">Commande</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+    <!-- Checkout Start -->
+    <div class="container">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <form action="" id="form">
+                    {% csrf_token %}
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Nom d'utilisateur</label>
+                            <input class="form-control" name="username" type="text" placeholder="John">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Nom</label>
+                            <input class="form-control" name="name" type="text" placeholder="Doe">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" name="email" type="text" placeholder="example@email.com">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Téléphone</label>
+                            <input class="form-control" name="phone" type="text" placeholder="+123 456 789">
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <select class="custom-select">
+                                <option selected>Côte d'ivoire</option>
+                                <option>Burkina Fasso</option>
+                                <option>Cameroom</option>
+                                <option>Autre...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-12 form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="newaccount">
+                                <label class="custom-control-label" for="newaccount">Create an account</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="shipto">
+                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-30 mb-5">
+                    <div class="shipping-info row mb-3">
+                       
+                            <div class="col-md-6 form-field mb-4">
+                                <label>Adresse</label>
+                                <input type="text" class="form-control" name="address" placeholder="address..." required>
+                            </div>
+                            <br>
+                            <div class="col-md-6 form-field">
+                                <label>ville</label>
+                                <input type="text" class="form-control" name="city" placeholder="Ville..." required>
+                            </div>
+                            <br>
+                            <div class="col-md-6 form-field">
+                                <label>Pays</label>
+                                <input type="text" class="form-control" name="state" placeholder="Pays..." required>
+                            </div>
+                            <br>
+                            <div class="col-md-6 form-field">
+                                <label>Zip code</label>
+                                <input type="text" class="form-control" name="zipcode" placeholder="Zip code..." required>
+                            </div>
+            
+                   
+                        
+                    </div>
+                </div>
+
+                <div class="collapse mb-5" id="shipping-address">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">ADRESSE DE FACTURATION</span></h5>
+                    <div class="bg-light p-30">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>First Name</label>
+                                <input class="form-control" type="text" placeholder="John">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Last Name</label>
+                                <input class="form-control" type="text" placeholder="Doe">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input class="form-control" type="text" placeholder="example@email.com">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Mobile No</label>
+                                <input class="form-control" type="text" placeholder="+123 456 789">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Address Line 1</label>
+                                <input class="form-control" type="text" placeholder="123 Street">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light p-30">
+                        <div class="row">
+                                        <div id="shipping-info">
+                <hr>
+                <p>Informations d'Expédition:</p>
+
+                <div class="form-field">
+                    <input type="text" class="form-control" name="address" placeholder="address..." required>
+                </div>
+                <br>
+                <div class="form-field">
+                    <input type="text" class="form-control" name="city" placeholder="Ville..." required>
+                </div>
+                <br>
+                <div class="form-field">
+                    <input type="text" class="form-control" name="state" placeholder="Pays..." required>
+                </div>
+                <br>
+                <div class="form-field">
+                    <input type="text" class="form-control" name="zipcode" placeholder="Zip code..." required>
+                </div>
+
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            </form>
+            <div class="col-lg-4">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Recapitulatif de la commande</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="border-bottom">
+                        <h6 class="mb-3">Produits</h6>
+                        {% for article in articles  %}
+                        <div class="d-flex justify-content-between">
+                            <p>{{article.produit.name}}<span class="text-danger" style="font-weight: bold;"> x{{article.quantite}}</span></p>
+                            <p>{{article.produit.price}}</p>
+                            
+                        </div>
+                        {% endfor  %}
+                    </div>
+                    <div class="border-bottom pt-3 pb-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>total</h6>
+                            <h6>{{commande.get_panier_total|floatformat:2}}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Bonus</h6>
+                            <h6 class="font-weight-medium">0</h6>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Total</h5>
+                            <h5>{{commande.get_panier_total|floatformat:2}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Paiement</span></h5>
+                    <div class="bg-light p-30">
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                                <label class="custom-control-label" for="paypal">Paypal</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
+                                <label class="custom-control-label" for="directcheck">Cash</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
+                                <label class="custom-control-label" for="banktransfer">Mobile Money</label>
+                            </div>
+                        </div>
+                        <input id="form-button" class="btn btn-block btn-primary font-weight-bold py-3" type="submit" value="Continuer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+
+ <!-- Include the PayPal JavaScript SDK -->
+ <script src="https://www.paypal.com/sdk/js?client-id=AZ0eZylbqLFaIEyWfH74MMFdCYRiR9PgIVKXjJiReDinExGn6ugJD1qFPge5bT_doUFj3Fu8Eil0DvPJ&currency=USD"></script>
+
+ <script>
+     var total = parseFloat('{{commande.get_panier_total}}').toFixed(2);
+     // Render the PayPal button into #paypal-button-container
+     paypal.Buttons({
+         
+         style:{
+            color: 'blue',
+            shape: 'rect',
+         },
+         // Set up the transaction
+         createOrder: function(data, actions) {
+             return actions.order.create({
+                 purchase_units: [{
+                     amount: {
+                         value: total
+                     }
+                 }]
+             });
+         },
+
+         // Finalize the transaction
+         onApprove: function(data, actions) {
+             return actions.order.capture().then(function(orderData) {
+                 // Successful capture! For demo purposes:
+                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                 var transaction = orderData.purchase_units[0].payments.captures[0];
+
+                 submitFormData(transaction.id, transaction.status);
+
+                 // Replace the above to show a success message within this page, e.g.
+                 // const element = document.getElementById('paypal-button-container');
+                 // element.innerHTML = '';
+                 // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                 // Or go to another URL:  actions.redirect('thank_you.html');
+             });
+         }
+
+
+     }).render('#paypal-button-container');
+ </script>
+ 
+ <script>
+    function checkout() {
+        CinetPay.setConfig({
+            apikey: '',//   YOUR APIKEY
+            site_id: '',//YOUR_SITE_ID
+            notify_url: 'http://mondomaine.com/notify/',
+            mode: 'TEST'
+        });
+        CinetPay.getCheckout({
+            transaction_id: Math.floor(Math.random() * 100000000).toString(), // YOUR TRANSACTION ID
+            amount: total * 650,
+            currency: 'XAF',
+            channels: 'ALL',
+            description: 'Test de paiement',   
+
+        });
+        CinetPay.waitResponse(function(data) {
+          
+            submitFormData(data.operator_id, data.status);
+            $("#cp_modal_first_parent").hide();
+            
+        });
+        CinetPay.onError(function(data) {
+            console.log(data);
+        });
+    }
+</script>
+
+<script type="text/javascript">
+
+    var produitPhysique = '{{commande.produit_physique}}';
+
+    var total = parseFloat('{{commande.get_panier_total}}').toFixed(2);
+
+
+    if( produitPhysique === 'False'){
+        document.getElementById('shipping-info').innerHTML = '';
+    }
+
+    if ( user != "AnonymousUser"){
+        document.getElementById('user-info').innerHTML = '';
+    }
+
+    if ( produitPhysique == "False" && user != "AnonymousUser"){
+        document.getElementById('form-wrapper').classList.add('hidden');
+        document.getElementById('payment-info').classList.remove('hidden');
+
+    }
+
+    form = document.getElementById('form');
+    csrftoken = form.getElementsByTagName('input')[0].value
+    console.log('neauveau token', csrftoken);
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        console.log('envoi des donnee ....');
+        document.getElementById('form-button').classList.add('hidden');
+        document.getElementById('payment-info').classList.remove('hidden');
+    })
+
+    // document.getElementById('make-payment').addEventListener('click', function(e){
+    //     submitFormData();
+    // })
+
+    function submitFormData(transactionId, status){
+
+        var paymentInfo = {
+            'transaction_id': transactionId,
+            'status': status
+        }
+        
+        var userFormData = {
+            'name':null,
+            'username':null,
+            'phone': null,
+            'email': null,
+            'total': total,
+        }
+
+        var shippingUserInfo = {
+            'address':null,
+            'city':null,
+            'state':null,
+            'zipcode':null,
+        }
+
+        if (produitPhysique != "False"){
+            shippingUserInfo.address = form.address.value;
+            shippingUserInfo.city = form.city.value;
+            shippingUserInfo.state = form.state.value;
+            shippingUserInfo.zipcode = form.zipcode.value;
+        }
+
+        if (user == "AnonymousUser"){
+            userFormData.name = form.name.value;
+            userFormData.username = form.username.value;
+            userFormData.phone = form.phone.value;
+            userFormData.email = form.email.value;
+
+            console.log(userFormData);
+        }
+
+        var url = '/traitement-commande/';
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify({"form": userFormData, "shipping": shippingUserInfo, 'payment_info': paymentInfo})
+        })
+
+        .then((response) => {
+            return response.json();
+        })
+
+        .then((data) => {
+            console.log('data', data);
+            //alert(data);
+            $("#cp_modal_first_parent").hide();
+            Swal.fire({icon:'info',text:data}).then(result => {
+                window.location.href = "{% url 'shop:shop' %}";
+            });
+            panier = {};
+            document.cookie = "panier=" + JSON.stringify(panier) + ";domain=;path=/";
+        })
+    }
+</script>
+
+{% endblock content %}

@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Aide - Paiement</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"><a href="{% url 'shop:aide' %}">Aide</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Paiement</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Content Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Modes de paiement acceptés</h2>
+                <p class="mb-4">Découvrez tous les modes de paiement sécurisés disponibles sur TradiShop.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Poser une question à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Modes de paiement disponibles</h3>
+                
+                <div class="row">
+                    <!-- Mobile Money -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-mobile-alt text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Mobile Money</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>MTN Mobile Money</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Orange Money</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Moov Money</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Paiement instantané</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-credit-card text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Cartes bancaires</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Visa</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Mastercard</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>American Express</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Paiement sécurisé</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank Transfer -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-university text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Virement bancaire</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Transfert direct</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Banques locales</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Confirmation par email</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Traçabilité complète</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cash on Delivery -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-hand-holding-usd text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Paiement à la livraison</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Espèces uniquement</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Frais supplémentaires</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Abidjan uniquement</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Montant exact requis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Sécurité des paiements</h3>
+                
+                <div class="row">
+                    <!-- SSL Security -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-shield-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>SSL Sécurisé</h5>
+                                <p class="text-muted">Toutes vos données sont cryptées avec la technologie SSL.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PCI Compliance -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-lock text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Conformité PCI</h5>
+                                <p class="text-muted">Respect des standards internationaux de sécurité.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fraud Protection -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-user-shield text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Protection anti-fraude</h5>
+                                <p class="text-muted">Système de détection des transactions suspectes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions fréquentes sur les paiements</h3>
+                
+                <div class="accordion" id="paiementAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Mes informations de paiement sont-elles sécurisées ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#paiementAccordion">
+                            <div class="card-body">
+                                Oui, toutes vos informations de paiement sont cryptées et protégées par les dernières technologies de sécurité SSL et PCI DSS.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Que faire si mon paiement échoue ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#paiementAccordion">
+                            <div class="card-body">
+                                Vérifiez vos informations de paiement et réessayez. Si le problème persiste, contactez votre banque ou notre service client.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Puis-je obtenir une facture ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#paiementAccordion">
+                            <div class="card-body">
+                                Oui, une facture vous sera envoyée par email après confirmation de votre paiement. Vous pouvez aussi la télécharger depuis votre compte.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">paiement@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens utiles</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_commande' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Commandes
+                        </a>
+                        <a href="{% url 'shop:aide_livraison' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </a>
+                        <a href="{% url 'shop:aide_retours' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-undo mr-2"></i>Retours
+                        </a>
+                        <a href="{% url 'shop:aide_compte' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-user mr-2"></i>Mon compte
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Tips -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Conseils de paiement</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Vérifiez votre solde avant le paiement</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Gardez votre téléphone à portée de main</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Ne partagez jamais vos codes PIN</li>
+                        <li><i class="fas fa-lightbulb text-warning mr-2"></i>Conservez vos reçus de paiement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Content End -->
+
+{% endblock content %}

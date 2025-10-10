@@ -1,0 +1,395 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">
+                        <i class="fas fa-cog text-primary"></i>
+                        Mes Paramètres
+                    </h2>
+                    <a href="{% url 'shop:accueil' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour à l'accueil
+                    </a>
+                </div>
+
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                        <i class="fas fa-{% if message.tags == 'error' %}exclamation-triangle{% else %}check-circle{% endif %}"></i>
+                        <span>{{ message|safe }}</span>
+                        <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
+                <div class="row">
+                    <!-- Informations du profil -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-user"></i>
+                                    Informations du profil
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" id="profileForm">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="update_profile">
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="username" class="form-label">Nom d'utilisateur</label>
+                                        <input type="text" class="form-control" id="username" value="{{ user.username }}" readonly>
+                                        <small class="form-text text-muted">Le nom d'utilisateur ne peut pas être modifié</small>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="first_name" class="form-label">Prénom *</label>
+                                                <input type="text" class="form-control" id="first_name" name="first_name" 
+                                                       value="{{ user.first_name }}" required 
+                                                       pattern="[a-zA-ZÀ-ÿ\s]+" title="Le prénom ne peut contenir que des lettres">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="last_name" class="form-label">Nom *</label>
+                                                <input type="text" class="form-control" id="last_name" name="last_name" 
+                                                       value="{{ user.last_name }}" required 
+                                                       pattern="[a-zA-ZÀ-ÿ\s]+" title="Le nom ne peut contenir que des lettres">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="email" class="form-label">Adresse email</label>
+                                        <input type="email" class="form-control" id="email" name="email" 
+                                               value="{{ user.email }}" readonly>
+                                        <small class="form-text text-muted">L'adresse email ne peut pas être modifiée</small>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Date d'inscription</label>
+                                        <input type="text" class="form-control" value="{{ user.date_joined|date:'d/m/Y à H:i' }}" readonly>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Dernière connexion</label>
+                                        <input type="text" class="form-control" 
+                                               value="{% if user.last_login %}{{ user.last_login|date:'d/m/Y à H:i' }}{% else %}Jamais{% endif %}" readonly>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        Mettre à jour le profil
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Changement de mot de passe -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-lock"></i>
+                                    Changer le mot de passe
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" id="passwordForm">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="change_password">
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="current_password" class="form-label">Mot de passe actuel *</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="current_password" name="current_password" required>
+                                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('current_password')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="new_password" class="form-label">Nouveau mot de passe *</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="new_password" name="new_password" required
+                                                   minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$"
+                                                   title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('new_password')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <small class="form-text text-muted">Minimum 8 caractères avec majuscule, minuscule, chiffre et caractère spécial</small>
+                                        <div id="password-strength" class="password-strength mt-2"></div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="confirm_password" class="form-label">Confirmer le nouveau mot de passe *</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirm_password')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div id="password-match" class="password-match mt-2"></div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="fas fa-key"></i>
+                                        Changer le mot de passe
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions du compte -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-tools"></i>
+                                    Actions du compte
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="d-grid">
+                                            <a href="{% url 'shop:favoris' %}" class="btn btn-outline-primary">
+                                                <i class="fas fa-heart"></i>
+                                                Mes favoris
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="d-grid">
+                                            <a href="{% url 'shop:panier' %}" class="btn btn-outline-success">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                Mon panier
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="d-grid">
+                                    <a href="{% url 'shop:logout' %}" class="btn btn-danger">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Se déconnecter
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.password-strength {
+    height: 20px;
+    margin-top: 5px;
+}
+
+.strength-bar {
+    height: 4px;
+    background-color: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.strength-fill.weak { background-color: #dc3545; }
+.strength-fill.medium { background-color: #ffc107; }
+.strength-fill.strong { background-color: #28a745; }
+.strength-fill.very-strong { background-color: #007bff; }
+
+.strength-text {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.strength-text.weak { color: #dc3545; }
+.strength-text.medium { color: #ffc107; }
+.strength-text.strong { color: #28a745; }
+.strength-text.very-strong { color: #007bff; }
+
+.password-match {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.password-match.success { color: #28a745; }
+.password-match.error { color: #dc3545; }
+
+.card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.btn {
+    border-radius: 5px;
+}
+
+.input-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-control[readonly] {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+</style>
+
+<script>
+// Toggle password visibility
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.nextElementSibling.querySelector('i');
+    
+    if (field.type === 'password') {
+        field.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        field.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+
+// Password strength checker
+function checkPasswordStrength(password) {
+    let strength = 0;
+    const checks = {
+        length: password.length >= 8,
+        lowercase: /[a-z]/.test(password),
+        uppercase: /[A-Z]/.test(password),
+        number: /\d/.test(password),
+        special: /[@$!%*?&]/.test(password)
+    };
+
+    strength = Object.values(checks).filter(Boolean).length;
+    return { strength, checks };
+}
+
+// Password strength indicator
+document.getElementById('new_password').addEventListener('input', function() {
+    const password = this.value;
+    const strengthDiv = document.getElementById('password-strength');
+    const { strength } = checkPasswordStrength(password);
+    
+    if (password.length > 0) {
+        let strengthText = '';
+        let strengthClass = '';
+        
+        if (strength <= 2) {
+            strengthText = 'Faible';
+            strengthClass = 'weak';
+        } else if (strength <= 3) {
+            strengthText = 'Moyen';
+            strengthClass = 'medium';
+        } else if (strength <= 4) {
+            strengthText = 'Fort';
+            strengthClass = 'strong';
+        } else {
+            strengthText = 'Très fort';
+            strengthClass = 'very-strong';
+        }
+        
+        strengthDiv.innerHTML = `
+            <div class="strength-bar">
+                <div class="strength-fill ${strengthClass}" style="width: ${(strength/5)*100}%"></div>
+            </div>
+            <span class="strength-text ${strengthClass}">${strengthText}</span>
+        `;
+    } else {
+        strengthDiv.innerHTML = '';
+    }
+});
+
+// Password confirmation validation
+document.getElementById('confirm_password').addEventListener('input', function() {
+    const newPassword = document.getElementById('new_password').value;
+    const confirmPassword = this.value;
+    const matchDiv = document.getElementById('password-match');
+    
+    if (confirmPassword.length > 0) {
+        if (newPassword === confirmPassword) {
+            matchDiv.innerHTML = '<i class="fas fa-check"></i> Les mots de passe correspondent';
+            matchDiv.className = 'password-match success';
+        } else {
+            matchDiv.innerHTML = '<i class="fas fa-times"></i> Les mots de passe ne correspondent pas';
+            matchDiv.className = 'password-match error';
+        }
+    } else {
+        matchDiv.innerHTML = '';
+        matchDiv.className = 'password-match';
+    }
+});
+
+// Form validation
+document.getElementById('passwordForm').addEventListener('submit', function(e) {
+    const newPassword = document.getElementById('new_password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    
+    if (newPassword !== confirmPassword) {
+        e.preventDefault();
+        alert('Les mots de passe ne correspondent pas');
+        return false;
+    }
+    
+    const { strength } = checkPasswordStrength(newPassword);
+    if (strength < 3) {
+        e.preventDefault();
+        alert('Le mot de passe est trop faible. Veuillez choisir un mot de passe plus fort.');
+        return false;
+    }
+});
+
+// Real-time validation feedback
+document.querySelectorAll('input[required]').forEach(input => {
+    input.addEventListener('blur', function() {
+        if (this.checkValidity()) {
+            this.classList.add('is-valid');
+            this.classList.remove('is-invalid');
+        } else {
+            this.classList.add('is-invalid');
+            this.classList.remove('is-valid');
+        }
+    });
+});
+</script>
+{% endblock %}

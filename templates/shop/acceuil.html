@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+   <!-- Carousel Start -->
+   <div class="container-fluid mb-3" id="shop">
+         <div class="row px-xl-5">
+             <div class="col-lg-8">
+                 <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                     <ol class="carousel-indicators">
+                         <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                         <li data-target="#header-carousel" data-slide-to="1"></li>
+                         <li data-target="#header-carousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item position-relative active" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="{% static 'images/style_men.jpg' %}" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Homme</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Découvrez notre collection de vêtements traditionnels pour hommes, conçus avec passion et savoir-faire artisanal. Laissez-vous séduire par notre style authentique et élégant.</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Acheter maintenant</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="{% static 'images/women_style.jpg' %}" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Femme</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Découvrez notre sélection de vêtements traditionnels pour femmes, alliant confort, élégance et qualité. Laissez-vous inspirer par nos créations uniques et intemporelles.</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Acheter maintenant</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="{% static 'images/children_style.jpg' %}" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Enfant</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Découvrez notre gamme de vêtements traditionnels pour enfants, fabriqués avec soin et attention aux détails. Offrez à vos enfants un style unique et adorable pour chaque occasion.</p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Acheter maintenant</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                 </div>
+             </div>
+             <div class="col-lg-4">
+                 <div class="product-offer mb-30" style="height: 200px;">
+                     <img class="img-fluid" src="{% static 'images/kids.jpg' %}" alt="">
+                     <div class="offer-text">
+                         <h6 class="text-white text-uppercase">Réduction 20%</h6>
+                         <h3 class="text-white mb-3">Special Offre</h3>
+                         <a href="" class="btn btn-primary">Achetez maintenant</a>
+                     </div>
+                 </div>
+                 <div class="product-offer mb-30" style="height: 200px;">
+                     <img class="img-fluid" src="{% static 'images/men_shop.jpg' %}" alt="">
+                     <div class="offer-text">
+                         <h6 class="text-white text-uppercase">Réduction 30%</h6>
+                         <h3 class="text-white mb-3">Special Offre</h3>
+                         <a href="" class="btn btn-primary">Achetez maintenant</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+   </div>
+   <!-- Carousel End -->
+
+   <!-- Featured Start -->
+   <div class="container-fluid pt-5">
+         <div class="row px-xl-5 pb-3">
+             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                     <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                     <h5 class="font-weight-semi-bold m-0">Produit de qualité</h5>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                     <h5 class="font-weight-semi-bold m-0">Livraison rapide</h5>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                     <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                     <h5 class="font-weight-semi-bold m-0">Retour sous 14 jours</h5>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                     <h5 class="font-weight-semi-bold m-0">Assistance 24h/24</h5>
+                 </div>
+             </div>
+         </div>
+   </div>
+   <!-- Featured End -->
+
+
+   <!-- Categories Start -->
+       <div class="container-fluid pt-5">
+         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+            <div class="row px-xl-5 pb-3">
+            {% for categorie in categories %}
+               <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                  <a class="text-decoration-none" href="{% url 'shop:shop' %}?categorie={{categorie.name}}">
+                        <div class="cat-item d-flex align-items-center mb-4">
+                           <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                              <img class="img-fluid" src="{{categorie.imageUrl}}" alt="{{categorie.image}}">
+                           </div>
+                           <div class="flex-fill pl-3">
+                              <h6>{{categorie.name}}</h6>
+                              <span>
+                                {% for key, value in nombre_produits_par_categorie.items %}
+                                    {% if key == categorie %}
+                                        <small style="color: rgb(101, 97, 97); font-weight: bold; position: relative; left: 20px; font-size: 12px;">{{ value }} {% if value > 1 %} produits {% else %} produit {% endif %} </small>
+                                    {% endif %}
+                                {% endfor %}
+                                </span>
+                        
+                           </div>
+                        </div>
+                  </a>
+               </div>
+               {% endfor %}
+            </div>
+         
+       </div>
+   <!-- Categories End -->
+   
+       <!-- Products Start -->
+      <div class="container-fluid pt-5 pb-3">
+         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">PRODUITS POPULAIRES</span></h2>
+         <div class="row px-xl-5">
+            {% for produit_catego in produits_home %}
+               {% for produit in produit_catego %}
+                     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <div class="product-item bg-light mb-4">
+                              <div class="product-img position-relative overflow-hidden">
+                                 <img class="img-fluid w-100" src="{{ produit.imageUrl }}" alt="">
+                                 <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square add-btn update-panier" data-produit="{{produit.pk}}" data-action="add"><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square toggle-favoris" data-produit="{{produit.pk}}" href="#">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                    <a class="btn btn-outline-dark btn-square" href="#" onclick="location.reload();"><i class="fas fa-sync"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="{% url 'shop:detail' produit.id %}"><i class="fa fa-search"></i></a>
+                                 </div>
+                              </div>
+                              <div class="text-center py-4">
+                                 <a class="h6 text-decoration-none text-truncate" href="{% url 'shop:detail' produit.id %}">{{produit.name}}</a>
+                                 <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>{{produit.price|floatformat:2}} FCFA</h5><h6 class="text-muted ml-2"><del>{{produit.price|floatformat:2}} FCFA</del></h6>
+                                 </div>
+                                 <div class="d-flex align-items-center justify-content-center mb-1">
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                    <small>(99)</small>
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+               {% endfor %}
+            {% endfor %}
+         </div>
+     </div>
+
+   <!-- Products End -->
+
+       <!-- Offer Start -->
+       <div class="container-fluid pt-5 pb-3">
+         <div class="row px-xl-5">
+             <div class="col-md-6">
+                 <div class="product-offer mb-30" style="height: 300px;">
+                     <img class="img-fluid" src="{% static 'images/men_tradi.jpg' %}" alt="">
+                     <div class="offer-text">
+                         <h6 class="text-white text-uppercase">Réduction 20%</h6>
+                         <h3 class="text-white mb-3">Special Offre</h3>
+                         <a href="" class="btn btn-primary">Achetez Maintenant</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="{% static 'images/bijou.jpg' %}" alt="">
+                    <div class="offer-text">
+                        <h6 class="text-white text-uppercase">Réduction 20%</h6>
+                        <h3 class="text-white mb-3">Special Offre</h3>
+                        <a href="" class="btn btn-primary">Achetez Maintenant</a>
+                    </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- Offer End -->
+
+
+
+         <!-- Vendor Start -->
+    <div class="container-fluid py-5">
+      <div class="row px-xl-5">
+          <div class="col">
+              <div class="owl-carousel vendor-carousel">
+                  <div class="bg-light p-4">
+                      <img src="{% static 'images/kids.jpg' %}" alt="">
+                  </div>
+                  <div class="bg-light p-4">
+                      <img src="{% static 'images/bijou.jpg' %}" alt="">
+                  </div>
+                  <div class="bg-light p-4">
+                      <img src="{% static 'images/men_tradi.jpg' %}" alt="">
+                  </div>
+                  <div class="bg-light p-4">
+                      <img src="{% static 'images/style_men.jpg' %}" alt="">
+                  </div>
+                  <div class="bg-light p-4">
+                      <img src="{% static 'images/women_style.jpg' %}" alt="">
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Vendor End -->
+
+   <!-- banner section end -->
+  
+ 
+ 
+     <!-- Back to Top -->
+     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+ 
+
+   <script type="text/javascript">
+     
+      $(document).ready(function(){
+         // Ajouter le token CSRF
+         function getCookie(name) {
+             let cookieValue = null;
+             if (document.cookie && document.cookie !== '') {
+                 const cookies = document.cookie.split(';');
+                 for (let i = 0; i < cookies.length; i++) {
+                     const cookie = cookies[i].trim();
+                     if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         const csrftoken = getCookie('csrftoken');
+
+         // Activer les contrôles du carrousel
+         var previousValue = ""; // Stocke la valeur précédente du champ de recherche
+
+         // Événement de saisie dans le champ de recherche
+         $("#search").on("input", function(){
+            var value = $(this).val().toLowerCase();
+            
+            if(value === "") {
+                  // Si le champ de recherche est vide, ne pas filtrer les éléments
+                  $("div .product-item").show(); // Afficher tous les éléments
+            } else {
+                  // Filtrer les éléments en fonction de la valeur saisie
+                  $("div .product-item").filter(function(){
+                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                  });
+            }
+
+            // Mettre à jour la valeur précédente
+            previousValue = value;
+
+            console.log(value);
+            console.log("ça passe");
+         });
+
+         // Gestionnaire d'événements pour le clic sur le bouton "Ajouter au panier"
+         $(".update-panier").on("click", function(event){
+               event.preventDefault();
+               var produitId = $(this).data('produit');
+               var action = $(this).data('action') || 'add';
+               var $btn = $(this);
+               
+               $.ajax({
+                   url: '{% url "shop:update_article" %}',
+                   type: 'POST',
+                   data: {
+                       'produit_id': produitId,
+                       'action': action,
+                       'csrfmiddlewaretoken': csrftoken
+                   },
+                   dataType: 'json',
+                   success: function(data) {
+                       $btn.find('i').removeClass('fa-shopping-cart').addClass('fa-check');
+                       setTimeout(function(){
+                           $btn.find('i').removeClass('fa-check').addClass('fa-shopping-cart');
+                       }, 1000);
+                       
+                       // Mettre à jour le compteur du panier
+                       if (action === 'add') {
+                           updatePanierCounter(1);
+                       } else if (action === 'remove') {
+                           updatePanierCounter(-1);
+                       }
+                   },
+                   error: function() {
+                       alert('Erreur lors de l\'ajout au panier');
+                   }
+               });
+         });
+
+         // Fonction pour mettre à jour le compteur du panier
+         function updatePanierCounter(change) {
+             $('.badge').each(function() {
+                 var $badge = $(this);
+                 var $parent = $badge.closest('a');
+                 
+                 if ($parent.find('i.fa-shopping-cart').length > 0) {
+                     var currentCount = parseInt($badge.text().trim()) || 0;
+                     var newCount = Math.max(0, currentCount + change);
+                     $badge.text(newCount);
+                     
+                     if (newCount > 0) {
+                         $badge.show();
+                     } else {
+                         $badge.hide();
+                     }
+                 }
+             });
+         }
+
+         // Gestion du toggle des favoris
+         $('.toggle-favoris').on('click', function(e){
+             e.preventDefault();
+             var produitId = $(this).data('produit');
+             var $btn = $(this);
+             var $icon = $btn.find('i');
+             
+             $.ajax({
+                 url: '{% url "shop:toggle_favoris" %}',
+                 type: 'POST',
+                 data: {
+                     'produit_id': produitId,
+                     'csrfmiddlewaretoken': csrftoken
+                 },
+                 dataType: 'json',
+                 success: function(data) {
+                     if (data.includes('ajouté')) {
+                         $icon.removeClass('far').addClass('fas text-danger');
+                         updateFavorisCounter(1);
+                     } else if (data.includes('retiré')) {
+                         $icon.removeClass('fas text-danger').addClass('far');
+                         updateFavorisCounter(-1);
+                     } else if (data.includes('connecter')) {
+                         alert('Veuillez vous connecter pour ajouter aux favoris');
+                         window.location.href = '{% url "shop:login" %}';
+                     }
+                 },
+                 error: function(xhr, status, error) {
+                     console.log('Erreur AJAX:', xhr.responseText);
+                     alert('Erreur lors de la mise à jour des favoris: ' + xhr.responseText);
+                 }
+             });
+         });
+
+         // Fonction pour mettre à jour le compteur des favoris
+         function updateFavorisCounter(change) {
+             $('.badge').each(function() {
+                 var $badge = $(this);
+                 var $parent = $badge.closest('a');
+                 
+                 if ($parent.find('i.fa-heart').length > 0) {
+                     var currentCount = parseInt($badge.text().trim()) || 0;
+                     var newCount = Math.max(0, currentCount + change);
+                     $badge.text(newCount);
+                     
+                     if (newCount > 0) {
+                         $badge.show();
+                     } else {
+                         $badge.hide();
+                     }
+                 }
+             });
+         }
+
+         $('.product-carousel').slick({
+               lazyLoad: 'ondemand',
+               slidesToShow: 4,
+               slidesToScroll: 1,
+               nextArrow: '<i class="arrow right"></i>',
+               prevArrow: '<i class="arrow left"></i>',
+                  
+
+
+               infinite: true,
+               responsive: [
+                  {
+                     breakpoint: 1024,
+                     settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                     }
+                  },
+                  {
+                     breakpoint: 600,
+                     settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                     }
+                  },
+                  {
+                     breakpoint: 480,
+                     settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                     }
+                  }
+                  // You can unslick at a given breakpoint now by adding:
+                  // settings: "unslick"
+                  // instead of a settings object
+               ]
+         });
+
+
+
+         
+      });
+    
+      
+   </script>
+
+
+{% endblock content %}

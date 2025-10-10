@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Favoris Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">
+                        <i class="fas fa-heart text-primary"></i>
+                        Mes Favoris
+                    </h2>
+                    <span class="badge badge-primary badge-lg">{{ nombre_favoris }} article{{ nombre_favoris|pluralize }}</span>
+                </div>
+                
+                {% if favoris %}
+                    <div class="row">
+                        {% for favori in favoris %}
+                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                <div class="product-item bg-light mb-4">
+                                    <div class="product-img position-relative overflow-hidden">
+                                        <img class="img-fluid w-100" src="{{ favori.produit.imageUrl }}" alt="{{ favori.produit.name }}">
+                                        <div class="product-action">
+                                            <a class="btn btn-outline-dark btn-square add-btn update-panier" 
+                                               data-produit="{{ favori.produit.pk }}" 
+                                               data-action="add">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                            <a class="btn btn-outline-dark btn-square toggle-favoris" 
+                                               data-produit="{{ favori.produit.pk }}">
+                                                <i class="fas fa-heart text-danger"></i>
+                                            </a>
+                                            <a class="btn btn-outline-dark btn-square" href="{% url 'shop:detail' favori.produit.pk %}">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center py-4">
+                                        <a class="h6 text-decoration-none text-truncate" href="{% url 'shop:detail' favori.produit.pk %}">
+                                            {{ favori.produit.name }}
+                                        </a>
+                                        <div class="d-flex align-items-center justify-content-center mt-2">
+                                            <h5>{{ favori.produit.price }} FCFA</h5>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center mb-1">
+                                            <small class="text-muted">Ajouté le {{ favori.date_ajout|date:"d/m/Y" }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <div class="mb-4">
+                            <i class="fas fa-heart fa-5x text-muted"></i>
+                        </div>
+                        <h4 class="text-muted">Aucun favori pour le moment</h4>
+                        <p class="text-muted">Découvrez nos produits et ajoutez vos préférés à vos favoris !</p>
+                        <a href="{% url 'shop:shop' %}" class="btn btn-primary">
+                            <i class="fas fa-shopping-bag"></i>
+                            Découvrir nos produits
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Favoris End -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function(){
+    // Gestion du toggle des favoris
+    $('.toggle-favoris').on('click', function(e){
+        e.preventDefault();
+        var produitId = $(this).data('produit');
+        var $btn = $(this);
+        
+        $.ajax({
+            url: '{% url "shop:toggle_favoris" %}',
+            type: 'POST',
+            data: {
+                'produit_id': produitId,
+                'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()
+            },
+            dataType: 'json',
+            success: function(data) {
+                if (data.includes('retiré')) {
+                    // Retirer de la page
+                    $btn.closest('.col-lg-3').fadeOut(300, function(){
+                        $(this).remove();
+                        // Mettre à jour le compteur
+                        var currentCount = parseInt($('.badge-lg').text());
+                        $('.badge-lg').text(currentCount - 1 + ' article' + (currentCount - 1 > 1 ? 's' : ''));
+                        
+                        // Si plus de favoris, afficher le message
+                        if (currentCount - 1 === 0) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    // Ajouté aux favoris
+                    $btn.find('i').addClass('text-danger');
+                }
+            },
+            error: function() {
+                alert('Erreur lors de la mise à jour des favoris');
+            }
+        });
+    });
+    
+    // Gestion de l'ajout au panier
+    $('.update-panier').on('click', function(e){
+        e.preventDefault();
+        var produitId = $(this).data('produit');
+        var $btn = $(this);
+        
+        $.ajax({
+            url: '{% url "shop:update_article" %}',
+            type: 'POST',
+            data: {
+                'produit_id': produitId,
+                'action': 'add',
+                'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()
+            },
+            dataType: 'json',
+            success: function(data) {
+                $btn.find('i').removeClass('fa-shopping-cart').addClass('fa-check');
+                setTimeout(function(){
+                    $btn.find('i').removeClass('fa-check').addClass('fa-shopping-cart');
+                }, 1000);
+            },
+            error: function() {
+                alert('Erreur lors de l\'ajout au panier');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

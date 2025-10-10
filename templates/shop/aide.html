@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Centre d'Aide</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Aide</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Section Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Comment pouvons-nous vous aider ?</h2>
+                <p class="mb-4">Notre assistant virtuel est là pour répondre à toutes vos questions sur TradiShop. Vous pouvez aussi consulter nos FAQ ci-dessous.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Parler à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Help Categories -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Catégories d'aide</h3>
+                
+                <div class="row">
+                    <!-- Orders -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-shopping-cart text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Commandes</h5>
+                                <p class="text-muted">Comment passer une commande, suivre votre colis et gérer vos achats.</p>
+                                <a href="{% url 'shop:aide_commande' %}" class="btn btn-outline-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-truck text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Livraison</h5>
+                                <p class="text-muted">Informations sur les délais, frais et options de livraison disponibles.</p>
+                                <a href="{% url 'shop:aide_livraison' %}" class="btn btn-outline-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-credit-card text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Paiement</h5>
+                                <p class="text-muted">Modes de paiement acceptés et sécurité de vos transactions.</p>
+                                <a href="{% url 'shop:aide_paiement' %}" class="btn btn-outline-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-user text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Mon compte</h5>
+                                <p class="text-muted">Gérer votre profil, vos adresses et vos préférences.</p>
+                                <a href="{% url 'shop:aide_compte' %}" class="btn btn-outline-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Returns -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-undo text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Retours</h5>
+                                <p class="text-muted">Politique de retour, remboursement et échange de produits.</p>
+                                <a href="{% url 'shop:aide_retours' %}" class="btn btn-outline-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chatbot -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-robot text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h5>Assistant virtuel</h5>
+                                <p class="text-muted">Obtenez des réponses instantanées à vos questions courantes.</p>
+                                <button class="btn btn-outline-primary" onclick="openChatbot()">Ouvrir l'assistant</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions Fréquentes</h3>
+                
+                <div class="accordion" id="faqAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Comment passer une commande ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Pour passer une commande, ajoutez les produits à votre panier en cliquant sur "Ajouter au panier", puis procédez au checkout. Vous pouvez aussi utiliser notre assistant virtuel pour vous guider.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Quels sont les délais de livraison ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Nos délais de livraison varient selon votre localisation. En général, comptez 1-7 jours ouvrés. Pour plus de détails, contactez notre assistant.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Quels modes de paiement acceptez-vous ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Nous acceptons Mobile Money, cartes bancaires, virement et paiement à la livraison. Tous vos paiements sont sécurisés.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Comment créer un compte ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Pour créer un compte, cliquez sur "Connexion" puis "Inscription". Remplissez le formulaire avec vos informations et validez votre email.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Puis-je retourner un produit ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Vous avez 14 jours pour retourner un produit non utilisé. Contactez notre assistant pour connaître la procédure complète.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">support@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Assistant Virtuel</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">Notre assistant IA est disponible 24/7 pour vous aider avec :</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-primary mr-2"></i>Commandes et livraisons</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>Paiements et factures</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>Retours et remboursements</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>Informations produits</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i>Support technique</li>
+                    </ul>
+                    <button class="btn btn-primary btn-block" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Commencer la conversation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens Rapides</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_commande' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Commandes
+                        </a>
+                        <a href="{% url 'shop:aide_livraison' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </a>
+                        <a href="{% url 'shop:aide_paiement' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-credit-card mr-2"></i>Paiement
+                        </a>
+                        <a href="{% url 'shop:aide_compte' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-user mr-2"></i>Mon compte
+                        </a>
+                        <a href="{% url 'shop:aide_retours' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-undo mr-2"></i>Retours
+                        </a>
+                        <hr>
+                        <a href="{% url 'shop:shop' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-bag mr-2"></i>Notre Boutique
+                        </a>
+                        <a href="{% url 'shop:panier' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Mon Panier
+                        </a>
+                        <a href="{% url 'shop:favoris' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-heart mr-2"></i>Mes Favoris
+                        </a>
+                        <a href="{% url 'shop:contact' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-envelope mr-2"></i>Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Section End -->
+
+{% endblock content %}

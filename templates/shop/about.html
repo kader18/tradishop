@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+      <div class="row px-xl-5">
+          <div class="col-12">
+              <nav class="breadcrumb bg-light mb-30">
+                  <a class="breadcrumb-item text-dark" href="{% url 'shop:accueil' %}">Acceuil</a>
+                  <a class="breadcrumb-item active" >A propos</a>
+              </nav>
+          </div>
+      </div>
+  </div>
+  <!-- Breadcrumb End -->
+
+  <!-- About debut -->
+  <div class="container">
+    <div class="col-lg-12 col-md-8">
+        <div class="row pb-3 align-items-center">          
+            <div>
+              <h2 style="color: rgb(239, 178, 66);">Présentation du Groupe</h2>
+            </div>
+
+            <h3 style="color: rgb(102, 100, 97);">▸Tradishop, le carrefour du commerce traditionnel </h3><br>
+
+            <div>
+              <div class="bold" >
+                  Pilier incontournable de l'économie locale, offrant une expérience d'achat unique tout en préservant les richesses culturelles et artisanales de nos régions.
+                  Notre mission est de préserver et de promouvoir le patrimoine traditionnel en proposant une sélection variée de produits authentiques, fabriqués avec savoir-faire et passion, afin d'enrichir le quotidien de nos clients.
+                  Notre plateforme rassemble un marché virtuel où artisans et consommateurs se rencontrent, un réseau logistique efficace assurant la livraison sécurisée de chaque produit, et un système de paiement fiable facilitant les transactions dans tous nos marchés.
+                  En partenariat avec plus de 50 000 artisans locaux, Tradishop a su attirer des millions de clients en quête d'authenticité et de qualité.
+                  Nous sommes engagés à soutenir une nouvelle génération de talents en offrant des opportunités d'emploi et en favorisant le développement de compétences traditionnelles dans nos communautés.
+                  Tradishop, c'est bien plus que du commerce, c'est une véritable vitrine de l'artisanat local, générant 10 000 emplois directs et bien plus encore grâce à notre réseau de fournisseurs et de partenaires logistiques. Notre engagement est ancré dans un impact durable et positif sur nos communautés. 
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- About fin -->
+
+
+{% endblock content %}
+

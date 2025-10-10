@@ -1,0 +1,34 @@
+/* Force TradiShop Logo */
+.logo-tradishop {
+    font-family: 'Arial', sans-serif !important;
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
+}
+
+.logo-tradishop .tradi-part {
+    background-color: rgb(123, 102, 44) !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+}
+
+.logo-tradishop .shop-part {
+    background-color: #007bff !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    margin-left: -4px !important;
+}
+
+/* Masquer les images de logo contenant Eflyer */
+img[src*="logo.png"], img[src*="footer-logo.png"] {
+    display: none !important;
+}
+
+/* Forcer l'affichage du logo TradiShop */
+.logo-tradishop {
+    display: inline-block !important;
+    visibility: visible !important;
+}

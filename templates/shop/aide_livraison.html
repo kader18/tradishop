@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Aide - Livraison</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="{% url 'shop:accueil' %}">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"><a href="{% url 'shop:aide' %}">Aide</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Livraison</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Help Content Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2 class="font-weight-semi-bold mb-4">Informations sur la livraison</h2>
+                <p class="mb-4">Découvrez nos options de livraison et délais pour recevoir vos produits traditionnels africains.</p>
+                
+                <!-- Chatbot Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-primary btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments mr-2"></i>Poser une question à l'Assistant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Delivery Options -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Options de livraison</h3>
+                
+                <div class="row">
+                    <!-- Standard Delivery -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-truck text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Livraison Standard</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Délai : 3-7 jours ouvrés</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Coût : Gratuit dès 50 000 FCFA</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Suivi : Email de confirmation</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Zone : Toute la Côte d'Ivoire</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Express Delivery -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-shipping-fast text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="text-center">Livraison Express</h5>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success mr-2"></i>Délai : 1-2 jours ouvrés</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Coût : 5 000 FCFA</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Suivi : SMS + Email</li>
+                                    <li><i class="fas fa-check text-success mr-2"></i>Zone : Abidjan uniquement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Process -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Processus de livraison</h3>
+                
+                <div class="row">
+                    <!-- Step 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">1</span>
+                                </div>
+                                <h5>Préparation</h5>
+                                <p class="text-muted">Votre commande est préparée et emballée avec soin.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">2</span>
+                                </div>
+                                <h5>Expédition</h5>
+                                <p class="text-muted">Votre colis est confié à notre transporteur partenaire.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="h4 mb-0">3</span>
+                                </div>
+                                <h5>Livraison</h5>
+                                <p class="text-muted">Réception de votre commande à l'adresse indiquée.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Questions fréquentes sur la livraison</h3>
+                
+                <div class="accordion" id="livraisonAccordion">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Quels sont les délais de livraison ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#livraisonAccordion">
+                            <div class="card-body">
+                                Les délais varient selon l'option choisie : 1-2 jours pour l'express (Abidjan), 3-7 jours pour la livraison standard (toute la Côte d'Ivoire).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Puis-je modifier l'adresse de livraison ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#livraisonAccordion">
+                            <div class="card-body">
+                                Vous pouvez modifier l'adresse de livraison tant que la commande n'a pas été expédiée. Contactez notre service client.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Que faire si je ne suis pas présent lors de la livraison ?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#livraisonAccordion">
+                            <div class="card-body">
+                                Le transporteur tentera une nouvelle livraison le jour suivant. Vous pouvez aussi demander une livraison à un point relais.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-5">
+                <h3 class="font-weight-semi-bold mb-4">Besoin d'aide supplémentaire ?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-phone text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Appelez-nous</h5>
+                                <p class="text-muted">+225 07 799 802 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">livraison@tradishop.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Liens utiles</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-column">
+                        <a href="{% url 'shop:aide_commande' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-shopping-cart mr-2"></i>Commandes
+                        </a>
+                        <a href="{% url 'shop:aide_paiement' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-credit-card mr-2"></i>Paiement
+                        </a>
+                        <a href="{% url 'shop:aide_retours' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-undo mr-2"></i>Retours
+                        </a>
+                        <a href="{% url 'shop:aide_compte' %}" class="text-decoration-none mb-2">
+                            <i class="fas fa-user mr-2"></i>Mon compte
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Zones -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Zones de livraison</h5>
+                </div>
+                <div class="card-body">
+                    <h6>Livraison Express (1-2 jours)</h6>
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Abidjan</li>
+                    </ul>
+                    
+                    <h6 class="mt-3">Livraison Standard (3-7 jours)</h6>
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Toute la Côte d'Ivoire</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Yamoussoukro</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Bouaké</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>San-Pédro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Help Content End -->
+
+{% endblock content %}
