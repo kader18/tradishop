@@ -22,6 +22,11 @@ urlpatterns = [
     # Chatbot
     path('chatbot/', views.chatbot, name='chatbot'),
     
+    # Langue et devise
+    path('change_language/', views.change_language, name='change_language'),
+    path('change_currency/', views.change_currency, name='change_currency'),
+    path('get_currency_info/', views.get_currency_info, name='get_currency_info'),
+    
     # Aide
     path('aide/', views.aide, name='aide'),
     path('aide/commande/', views.aide_commande, name='aide_commande'),

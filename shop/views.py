@@ -28,6 +28,9 @@ from .token import TokenGeneretor
 from django.contrib.auth import get_user_model
 from django.utils.encoding import force_bytes, force_str
 from django.urls import reverse
+from django.utils import translation
+from django.conf import settings
+from django.http import JsonResponse
 
 generate_token = TokenGeneretor()
 
@@ -684,25 +687,47 @@ def chatbot(request, *args, **kwargs):
             'tradishop': 'TradiShop est votre boutique en ligne spécialisée dans les produits traditionnels africains.',
             'boutique': 'Notre boutique propose une large gamme de produits : vêtements, bijoux, chaussures, accessoires et plus encore.',
             'panier': 'Pour ajouter un produit au panier, cliquez sur le bouton "Ajouter au panier" sur la page du produit.',
-            'favoris': 'Vous pouvez ajouter des produits à vos favoris en cliquant sur l\'icône cœur.',
-            'recherche': 'Utilisez la barre de recherche en haut de la page pour trouver des produits spécifiques.',
-            'categorie': 'Nous avons plusieurs catégories : vêtements, bijoux, chaussures, accessoires, et bien plus.',
-            'qualite': 'Tous nos produits sont sélectionnés pour leur qualité et leur authenticité traditionnelle.',
-            'securite': 'Vos données personnelles et vos paiements sont protégés par des protocoles de sécurité avancés.',
         }
         
-        # Recherche de mots-clés dans le message
-        message_lower = message.lower()
-        response = "Je ne comprends pas votre question. Pouvez-vous reformuler ? Vous pouvez aussi nous contacter directement."
+        # Réponse simple basée sur les mots-clés
+        response_text = "Désolé, je n'ai pas compris votre question. Pouvez-vous reformuler ?"
         
-        for keyword, answer in responses.items():
-            if keyword in message_lower:
-                response = answer
+        for keyword, response in responses.items():
+            if keyword in message.lower():
+                response_text = response
                 break
         
-        return JsonResponse({'response': response})
+        return JsonResponse({'response': response_text})
     
-    return JsonResponse({'error': 'Méthode non autorisée'})
+    return JsonResponse({'response': 'Bonjour ! Comment puis-je vous aider ?'})
+
+
+def change_language(request):
+    """Vue pour changer la langue"""
+    if request.method == 'POST':
+        language = request.POST.get('language', 'fr')
+        if language in [lang[0] for lang in settings.LANGUAGES]:
+            translation.activate(language)
+            request.session[translation.LANGUAGE_SESSION_KEY] = language
+            return JsonResponse({'success': True, 'language': language})
+    return JsonResponse({'success': False})
+
+
+def change_currency(request):
+    """Vue pour changer la devise"""
+    if request.method == 'POST':
+        currency = request.POST.get('currency', 'FCFA')
+        if currency in settings.CURRENCIES:
+            request.session['currency'] = currency
+            return JsonResponse({'success': True, 'currency': currency})
+    return JsonResponse({'success': False})
+
+
+def get_currency_info(request):
+    """Récupérer les informations de devise"""
+    currency = request.session.get('currency', 'FCFA')
+    currency_info = settings.CURRENCIES.get(currency, settings.CURRENCIES['FCFA'])
+    return JsonResponse(currency_info)
 
 
 # Page d'aide

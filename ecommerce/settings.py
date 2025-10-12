@@ -36,9 +36,9 @@ SECRET_KEY = "django-insecure-ns-x!g2q4q1zysw3ohq#i9s-&e49r8^q&5+av5r+mue39#)!%&
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['tradishop.ci', 'www.tradishop.ci', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'tradishop.ci,www.tradishop.ci,localhost,127.0.0.1').split(',')
 
 
 # Email settings - configuration pour la réinitialisation de mot de passe
@@ -88,6 +88,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     # 'whitenoise.middleware.WhiteNoiseMiddleware',  # Désactivé pour le développement local
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",  # Middleware pour les langues
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -121,6 +122,10 @@ WSGI_APPLICATION = "ecommerce.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Configuration de base de données pour la production
+import dj_database_url
+
+# Base de données par défaut (SQLite pour le développement)
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -128,11 +133,12 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default="postgresql://tradishop_user:AxUkVZZBM2JtbO2aEPCvtWRTRwow4Fqc@dpg-d3lmqhhr0fns73e4ihf0-a.oregon-postgres.render.com/tradishop"
-#     )
-# }
+# Configuration PostgreSQL pour la production (Render)
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 
 
 
@@ -166,6 +172,24 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Langues supportées
+LANGUAGES = [
+    ('fr', 'Français'),
+    ('en', 'English'),
+]
+
+# Dossier des traductions
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+# Devises supportées
+CURRENCIES = {
+    'FCFA': {'symbol': 'FCFA', 'rate': 1.0, 'name': 'Franc CFA'},
+    'USD': {'symbol': '$', 'rate': 0.0017, 'name': 'Dollar US'},
+    'EUR': {'symbol': '€', 'rate': 0.0015, 'name': 'Euro'},
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -189,7 +213,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "images")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# WhiteNoise configuration (désactivé pour le développement local)
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise configuration pour la production
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
