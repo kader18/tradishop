@@ -8,7 +8,7 @@
 }
 
 body {
-    background: url("images/bg-intro-desktop.png") #ff7a7a no-repeat; 
+    background: #ff7a7a; /* image bg-intro-desktop.png supprimée */ 
     background-size: cover;  
 }
 

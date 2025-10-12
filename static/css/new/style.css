@@ -667,7 +667,7 @@ img.review-stars {
 .banner_bg_main {
     width: 100%;
     float: left;
-    background-image: url("/static/images/banner-bg.png");
+    /* background-image supprimé - fichier banner-bg.png non trouvé */
     height: auto;
     background-size: 100%;
     background-repeat: no-repeat;
