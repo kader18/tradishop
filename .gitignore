@@ -28,7 +28,6 @@ wheels/
 # Django
 *.log
 local_settings.py
-settings.py
 settings_production.py
 db.sqlite3
 db.sqlite3-journal
