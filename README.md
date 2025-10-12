@@ -1,45 +1,57 @@
-﻿# TradiShop - Site E-commerce Traditionnel
+﻿# 🛍️ TradiShop - E-commerce Traditionnel Africain
 
-## Description
-TradiShop est un site e-commerce Django spécialisé dans la vente de produits traditionnels africains. Le site propose des vêtements, chaussures, bijoux, médicaments traditionnels et bien plus encore.
+[![Django](https://img.shields.io/badge/Django-5.0.4-green.svg)](https://djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Fonctionnalités Principales
+> **TradiShop** est une plateforme e-commerce Django moderne spécialisée dans la vente de produits traditionnels africains authentiques. Découvrez une sélection unique de vêtements, chaussures, bijoux, médicaments traditionnels et bien plus encore.
 
-### 🛍️ E-commerce
-- **Catalogue de produits** avec catégories (Chaussures, Vêtements, Bijoux, etc.)
-- **Système de panier** avec gestion des quantités
-- **Pages de détail** des produits avec images multiples
-- **Système de commande** avec validation
-- **Gestion des livraisons** et adresses
+## 🌟 Fonctionnalités Principales
 
-### 👤 Authentification
-- **Inscription** des utilisateurs
-- **Connexion/Déconnexion**
-- **Réinitialisation de mot de passe**
-- **Gestion des profils clients**
+### 🛒 E-commerce Complet
+- **Catalogue de produits** avec catégories organisées
+- **Système de panier** intelligent avec gestion des quantités
+- **Pages de détail** produits avec galerie d'images
+- **Système de commande** sécurisé avec validation
+- **Gestion des livraisons** et adresses multiples
+- **Système de favoris** pour sauvegarder les produits préférés
 
-### 🎨 Interface
-- **Design responsive** adapté mobile/desktop
+### 👤 Authentification & Sécurité
+- **Inscription/Connexion** utilisateurs sécurisée
+- **Réinitialisation de mot de passe** par email
+- **Gestion des profils** clients personnalisés
+- **Protection CSRF** et validation des formulaires
+- **Authentification sociale** (Google, Facebook)
+
+### 🎨 Interface Moderne
+- **Design responsive** adapté mobile/tablette/desktop
 - **Navigation intuitive** avec menu catégories
-- **Images optimisées** pour les produits
-- **Templates modernes** avec Bootstrap
+- **Images optimisées** et galeries produits
+- **Templates Bootstrap 4** avec CSS personnalisé
+- **Interface d'administration** Django complète
 
-## Installation et Configuration
+### 🤖 Fonctionnalités Avancées
+- **Chatbot intégré** pour l'assistance client
+- **Système d'aide** avec FAQ détaillée
+- **Gestion des plats traditionnels** (section spéciale)
+- **Système de recherche** et filtres produits
+
+## 🚀 Installation Rapide
 
 ### Prérequis
-- Python 3.8+
-- pip
-- Git
+- **Python 3.8+**
+- **pip** (gestionnaire de paquets Python)
+- **Git** (pour cloner le projet)
 
-### Installation
+### Installation en 5 étapes
 
 1. **Cloner le projet**
 ```bash
-git clone <url-du-repo>
-cd tradishop-main
+git clone https://github.com/kader18/tradishop.git
+cd tradishop
 ```
 
-2. **Créer un environnement virtuel**
+2. **Créer l'environnement virtuel**
 ```bash
 python -m venv env
 ```
@@ -58,81 +70,100 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-5. **Configurer la base de données**
+5. **Configuration et lancement**
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-```
-
-6. **Créer un superutilisateur**
-```bash
 python manage.py createsuperuser
-```
-
-7. **Lancer le serveur**
-```bash
 python manage.py runserver
 ```
 
-### Accès
+### 🌐 Accès au Site
 - **Site web** : http://127.0.0.1:8000/
 - **Administration** : http://127.0.0.1:8000/admin/
-  - Utilisateur : admin
-  - Mot de passe : admin123
 
-## Structure du Projet
+## 📁 Structure du Projet
 
 ```
-tradishop-main/
-├── ecommerce/           # Configuration Django
-│   ├── settings.py      # Paramètres du projet
-│   ├── urls.py         # URLs principales
-│   └── wsgi.py         # Configuration WSGI
-├── shop/               # Application principale
-│   ├── models.py       # Modèles de données
-│   ├── views.py        # Vues et logique métier
-│   ├── urls.py         # URLs de l'app
-│   └── admin.py        # Interface d'administration
-├── templates/          # Templates HTML
-│   ├── base.html       # Template de base
-│   ├── auth/           # Templates d'authentification
-│   └── shop/           # Templates de l'e-commerce
-├── static/             # Fichiers statiques
-│   ├── css/            # Styles CSS
-│   ├── js/             # JavaScript
-│   └── images/         # Images du site
-├── images/             # Images des produits (médias)
-├── manage.py           # Script de gestion Django
-└── requirements.txt    # Dépendances Python
+tradishop/
+├── 📁 ecommerce/              # Configuration Django principale
+│   ├── settings.py            # ⚠️ Paramètres (exclu du repo pour sécurité)
+│   ├── urls.py               # URLs principales du projet
+│   ├── wsgi.py               # Configuration WSGI
+│   └── asgi.py               # Configuration ASGI
+├── 📁 shop/                   # Application e-commerce principale
+│   ├── models.py             # Modèles de données (Produit, Commande, etc.)
+│   ├── views.py              # Vues et logique métier
+│   ├── urls.py               # URLs de l'application shop
+│   ├── admin.py              # Interface d'administration
+│   ├── utils.py              # Utilitaires et fonctions helper
+│   └── token.py              # Gestion des tokens
+├── 📁 templates/             # Templates HTML
+│   ├── base.html             # Template de base
+│   ├── navbar.html           # Barre de navigation
+│   ├── 📁 auth/              # Templates d'authentification
+│   └── 📁 shop/              # Templates e-commerce
+├── 📁 static/                # Fichiers statiques
+│   ├── 📁 css/               # Styles CSS
+│   ├── 📁 js/                # JavaScript
+│   ├── 📁 images/            # Images du site
+│   └── 📁 lib/               # Bibliothèques externes
+├── 📁 images/                # Images des produits (médias)
+├── 📁 env/                   # Environnement virtuel Python
+├── manage.py                 # Script de gestion Django
+├── requirements.txt          # Dépendances Python
+└── README.md                 # Documentation du projet
 ```
 
-## Modèles de Données
+## 🗄️ Modèles de Données
 
-### Produit
-- Nom, prix, description
-- Catégorie, images multiples
-- Statut de publication
-- Gestion des livraisons
+### 🛍️ Produit
+- **Nom, prix, description** détaillée
+- **Catégorie** et sous-catégories
+- **Images multiples** avec galerie
+- **Statut de publication** (actif/inactif)
+- **Gestion des stocks** et disponibilité
 
-### Category
-- Nom, description
-- Image de catégorie
+### 📂 Category
+- **Nom et description** de la catégorie
+- **Image de catégorie** représentative
+- **Hiérarchie** des catégories
 
-### Client
-- Lien avec User Django
-- Informations de contact
+### 👤 Client
+- **Lien avec User Django** (authentification)
+- **Informations de contact** complètes
+- **Historique des commandes**
+- **Adresses de livraison** multiples
 
-### Commande
-- Gestion du panier
-- Statut de commande
-- Transaction ID
-- Adresse de livraison
+### 📦 Commande
+- **Gestion du panier** et articles
+- **Statut de commande** (en cours, livrée, etc.)
+- **Transaction ID** unique
+- **Adresse de livraison** et facturation
+- **Méthode de paiement**
 
-## Configuration Email
+### 🍽️ ProgrammePlats
+- **Gestion des plats traditionnels**
+- **Recettes et ingrédients**
+- **Images des plats**
 
-Pour activer l'envoi d'emails, modifiez `ecommerce/settings.py` :
+## ⚙️ Configuration
 
+### 🔐 Sécurité
+Le fichier `settings.py` contient des informations sensibles et est **exclu du repository** pour des raisons de sécurité. Pour configurer le projet :
+
+1. **Créer un fichier `ecommerce/settings.py`** basé sur `ecommerce/settings.py.example`
+2. **Configurer les variables d'environnement** :
 ```python
+SECRET_KEY = 'votre-clé-secrète-django'
+DEBUG = True  # False en production
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+```
+
+### 📧 Configuration Email
+Pour activer l'envoi d'emails (réinitialisation de mot de passe) :
+```python
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'votre-email@gmail.com'
 EMAIL_HOST_PASSWORD = 'votre-mot-de-passe-app'
@@ -140,70 +171,106 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 ```
 
-## Fonctionnalités Techniques
-
-### Sécurité
-- Protection CSRF
-- Validation des formulaires
-- Gestion des erreurs
-- Authentification sécurisée
-
-### Performance
-- Pagination des produits
-- Images optimisées
-- Requêtes optimisées
-- Cache des sessions
-
-### Responsive Design
-- Bootstrap 4
-- Design adaptatif
-- Navigation mobile
-- Images responsives
-
-## Déploiement
-
-### Production
-1. Modifier `DEBUG = False` dans settings.py
-2. Configurer `ALLOWED_HOSTS`
-3. Configurer la base de données de production
-4. Collecter les fichiers statiques : `python manage.py collectstatic`
-5. Configurer le serveur web (Apache/Nginx)
-
-### Variables d'environnement
-Créer un fichier `.env` :
+### 🗃️ Base de Données
+Par défaut, le projet utilise **SQLite** pour le développement. Pour la production, configurez PostgreSQL ou MySQL :
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tradishop_db',
+        'USER': 'votre_utilisateur',
+        'PASSWORD': 'votre_mot_de_passe',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 ```
-SECRET_KEY=votre-secret-key
+
+## 🚀 Déploiement en Production
+
+### 1. Configuration Production
+```python
+DEBUG = False
+ALLOWED_HOSTS = ['votre-domaine.com', 'www.votre-domaine.com']
+SECRET_KEY = 'votre-clé-secrète-production'
+```
+
+### 2. Collecte des fichiers statiques
+```bash
+python manage.py collectstatic
+```
+
+### 3. Configuration serveur web
+- **Nginx** pour servir les fichiers statiques
+- **Gunicorn** comme serveur WSGI
+- **PostgreSQL** pour la base de données
+
+### 4. Variables d'environnement
+Créer un fichier `.env` :
+```env
+SECRET_KEY=votre-secret-key-production
 DEBUG=False
-DATABASE_URL=postgresql://user:password@localhost/dbname
+DATABASE_URL=postgresql://user:password@localhost/tradishop_db
 EMAIL_HOST_PASSWORD=votre-mot-de-passe-email
 ```
 
-## Support et Maintenance
+## 🛠️ Technologies Utilisées
 
-### Logs
-- Les logs Django sont dans la console
-- Erreurs 404/500 affichées en mode DEBUG
+- **Backend** : Django 5.0.4, Python 3.8+
+- **Frontend** : HTML5, CSS3, JavaScript, Bootstrap 4
+- **Base de données** : SQLite (dev), PostgreSQL (prod)
+- **Authentification** : Django Auth + Social Auth
+- **Interface** : Django Admin, Crispy Forms
+- **Déploiement** : WSGI, Gunicorn, Nginx
 
-### Sauvegarde
-- Base de données : `python manage.py dumpdata > backup.json`
-- Images : sauvegarder le dossier `images/`
+## 📊 Fonctionnalités Techniques
 
-### Mise à jour
-1. Sauvegarder la base de données
-2. Mettre à jour le code
-3. Appliquer les migrations : `python manage.py migrate`
-4. Redémarrer le serveur
+### 🔒 Sécurité
+- Protection CSRF intégrée
+- Validation des formulaires Django
+- Gestion sécurisée des sessions
+- Authentification robuste
+- Exclusion des fichiers sensibles
 
-## Contact
+### ⚡ Performance
+- Pagination des produits
+- Images optimisées et compressées
+- Requêtes de base de données optimisées
+- Cache des sessions utilisateur
+- Gestion efficace des fichiers statiques
 
-Pour toute question ou support :
-- Email : kadersoro18@gmail.com
-- GitHub : [Votre profil GitHub]
+### 📱 Responsive Design
+- Bootstrap 4 pour la responsivité
+- Design adaptatif mobile-first
+- Navigation optimisée pour mobile
+- Images responsives avec lazy loading
 
-## Licence
+## 🤝 Contribution
 
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. **Fork** le projet
+2. **Créer une branche** pour votre fonctionnalité (`git checkout -b feature/nouvelle-fonctionnalite`)
+3. **Commit** vos changements (`git commit -m 'Ajout nouvelle fonctionnalité'`)
+4. **Push** vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
+5. **Ouvrir une Pull Request**
+
+## 📞 Support & Contact
+
+- **Email** : kadersoro18@gmail.com
+- **GitHub** : [@kader18](https://github.com/kader18)
+- **Projet** : [TradiShop Repository](https://github.com/kader18/tradishop)
+
+## 📄 Licence
+
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
-**TradiShop** - Votre boutique en ligne pour les produits traditionnels africains authentiques.
+<div align="center">
+
+**🌟 TradiShop - Votre boutique en ligne pour les produits traditionnels africains authentiques 🌟**
+
+*Fait avec ❤️ en Django*
+
+</div>
