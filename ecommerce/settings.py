@@ -15,7 +15,7 @@ from pathlib import Path
 from .info import *
 from dotenv import load_dotenv
 from decouple import config
-# import dj_database_url
+import dj_database_url
 
 load_dotenv()
 
@@ -32,7 +32,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-ns-x!g2q4q1zysw3ohq#i9s-&e49r8^q&5+av5r+mue39#)!%&"
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Désactivé pour le développement local
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Désactivé pour le développement local
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -86,7 +86,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',  # Désactivé pour le développement local
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Désactivé pour le développement local
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",  # Middleware pour les langues
     "django.middleware.common.CommonMiddleware",
@@ -124,11 +124,17 @@ WSGI_APPLICATION = "ecommerce.wsgi.application"
 
 # Configuration de base de données pour la production
 # Base de données par défaut (SQLite pour le développement)
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default="postgresql://tradishop_user:AxUkVZZBM2JtbO2aEPCvtWRTRwow4Fqc@dpg-d3lmqhhr0fns73e4ihf0-a.oregon-postgres.render.com/tradishop"
+    )
 }
 
 # Configuration PostgreSQL pour la production (Render)
