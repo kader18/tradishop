@@ -123,8 +123,6 @@ WSGI_APPLICATION = "ecommerce.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Configuration de base de données pour la production
-import dj_database_url
-
 # Base de données par défaut (SQLite pour le développement)
 DATABASES = {
     "default": {
@@ -135,10 +133,15 @@ DATABASES = {
 
 # Configuration PostgreSQL pour la production (Render)
 if os.environ.get('DATABASE_URL'):
-    DATABASES['default'] = dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600
-    )
+    try:
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
+    except ImportError:
+        # Si dj_database_url n'est pas installé, utiliser SQLite
+        pass
 
 
 
