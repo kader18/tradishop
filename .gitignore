@@ -33,6 +33,16 @@ db.sqlite3
 db.sqlite3-journal
 media/
 
+# Images
+images/
+static/images/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.svg
+
 # IDE
 .vscode/
 .idea/

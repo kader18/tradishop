@@ -15,8 +15,8 @@
                          <li data-target="#header-carousel" data-slide-to="2"></li>
                      </ol>
                      <div class="carousel-inner">
-                        <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="{% static 'images/style_men.jpg' %}" style="object-fit: cover;">
+                        <div class="carousel-item position-relative active" style="height: 430px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <!-- Image remplacée par couleur de fond -->
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Homme</h1>
@@ -25,8 +25,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="{% static 'images/women_style.jpg' %}" style="object-fit: cover;">
+                        <div class="carousel-item position-relative" style="height: 430px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <!-- Image remplacée par couleur de fond -->
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Femme</h1>
@@ -35,8 +35,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="{% static 'images/children_style.jpg' %}" style="object-fit: cover;">
+                        <div class="carousel-item position-relative" style="height: 430px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <!-- Image remplacée par couleur de fond -->
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mode Enfant</h1>
@@ -50,7 +50,7 @@
              </div>
              <div class="col-lg-4">
                  <div class="product-offer mb-30" style="height: 200px;">
-                     <img class="img-fluid" src="{% static 'images/kids.jpg' %}" alt="">
+                     <div class="bg-primary text-white d-flex align-items-center justify-content-center" style="height: 200px;"><i class="fas fa-child fa-3x"></i></div>
                      <div class="offer-text">
                          <h6 class="text-white text-uppercase">Réduction 20%</h6>
                          <h3 class="text-white mb-3">Special Offre</h3>
@@ -58,7 +58,7 @@
                      </div>
                  </div>
                  <div class="product-offer mb-30" style="height: 200px;">
-                     <img class="img-fluid" src="{% static 'images/men_shop.jpg' %}" alt="">
+                     <div class="bg-success text-white d-flex align-items-center justify-content-center" style="height: 200px;"><i class="fas fa-male fa-3x"></i></div>
                      <div class="offer-text">
                          <h6 class="text-white text-uppercase">Réduction 30%</h6>
                          <h3 class="text-white mb-3">Special Offre</h3>
@@ -180,7 +180,7 @@
          <div class="row px-xl-5">
              <div class="col-md-6">
                  <div class="product-offer mb-30" style="height: 300px;">
-                     <img class="img-fluid" src="{% static 'images/men_tradi.jpg' %}" alt="">
+                     <div class="bg-warning text-white d-flex align-items-center justify-content-center" style="height: 300px;"><i class="fas fa-tshirt fa-3x"></i></div>
                      <div class="offer-text">
                          <h6 class="text-white text-uppercase">Réduction 20%</h6>
                          <h3 class="text-white mb-3">Special Offre</h3>
@@ -190,7 +190,7 @@
              </div>
              <div class="col-md-6">
                  <div class="product-offer mb-30" style="height: 300px;">
-                    <img class="img-fluid" src="{% static 'images/bijou.jpg' %}" alt="">
+                    <div class="bg-info text-white d-flex align-items-center justify-content-center" style="height: 300px;"><i class="fas fa-gem fa-3x"></i></div>
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase">Réduction 20%</h6>
                         <h3 class="text-white mb-3">Special Offre</h3>
@@ -210,19 +210,19 @@
           <div class="col">
               <div class="owl-carousel vendor-carousel">
                   <div class="bg-light p-4">
-                      <img src="{% static 'images/kids.jpg' %}" alt="">
+                      <div class="bg-light text-center p-4"><i class="fas fa-store fa-2x text-muted"></i></div>
                   </div>
                   <div class="bg-light p-4">
-                      <img src="{% static 'images/bijou.jpg' %}" alt="">
+                      <div class="bg-light text-center p-4"><i class="fas fa-store fa-2x text-muted"></i></div>
                   </div>
                   <div class="bg-light p-4">
-                      <img src="{% static 'images/men_tradi.jpg' %}" alt="">
+                      <div class="bg-light text-center p-4"><i class="fas fa-store fa-2x text-muted"></i></div>
                   </div>
                   <div class="bg-light p-4">
-                      <img src="{% static 'images/style_men.jpg' %}" alt="">
+                      <div class="bg-light text-center p-4"><i class="fas fa-store fa-2x text-muted"></i></div>
                   </div>
                   <div class="bg-light p-4">
-                      <img src="{% static 'images/women_style.jpg' %}" alt="">
+                      <div class="bg-light text-center p-4"><i class="fas fa-store fa-2x text-muted"></i></div>
                   </div>
                   
               </div>
