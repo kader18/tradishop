@@ -9,7 +9,11 @@
         <div class="container">
             {% for produit in produits  %}
             <div class="box">
-                 <img src="{{ produit.imageUrl }}" alt="">
+                 {% if produit.imageUrl %}
+                     <img src="{{ produit.imageUrl }}" alt="{{ produit.name }}">
+                 {% else %}
+                     <img src="{% static 'images/placeholder.png' %}" alt="Image non disponible">
+                 {% endif %}
                  <h4>{{produit.name}}</h4>
                  <h5>{{produit.price|floatformat:2}} FCFA</h5>
                  <div class="cart">

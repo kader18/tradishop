@@ -21,7 +21,11 @@
                             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                                 <div class="product-item bg-light mb-4">
                                     <div class="product-img position-relative overflow-hidden">
-                                        <img class="img-fluid w-100" src="{{ favori.produit.imageUrl }}" alt="{{ favori.produit.name }}">
+                                        {% if favori.produit.imageUrl %}
+                                            <img class="img-fluid w-100" src="{{ favori.produit.imageUrl }}" alt="{{ favori.produit.name }}">
+                                        {% else %}
+                                            <img class="img-fluid w-100" src="{% static 'images/placeholder.png' %}" alt="Image non disponible">
+                                        {% endif %}
                                         <div class="product-action">
                                             <a class="btn btn-outline-dark btn-square add-btn update-panier" 
                                                data-produit="{{ favori.produit.pk }}" 

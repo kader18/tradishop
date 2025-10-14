@@ -447,7 +447,11 @@
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="{{ produit.imageUrl }}" alt="{{ produit.name }}">
+                        {% if produit.imageUrl %}
+                            <img class="img-fluid w-100" src="{{ produit.imageUrl }}" alt="{{ produit.name }}">
+                        {% else %}
+                            <img class="img-fluid w-100" src="{% static 'images/placeholder.png' %}" alt="Image non disponible">
+                        {% endif %}
                         <div class="product-action">
                             <a class="btn btn-outline-dark btn-square update-panier" data-produit="{{produit.pk}}" data-action="add"><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square toggle-favoris" data-produit="{{produit.pk}}" href="#">

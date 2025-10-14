@@ -35,7 +35,14 @@
                 <tbody class="align-middle">
                     {% for article in articles  %}
                     <tr>
-                        <td class="align-middle"><img src="{{article.produit.imageUrl}}" alt="" style="width: 50px;">{{article.produit.name}}</td>
+                        <td class="align-middle">
+                            {% if article.produit.imageUrl %}
+                                <img src="{{article.produit.imageUrl}}" alt="{{article.produit.name}}" style="width: 50px;">
+                            {% else %}
+                                <img src="{% static 'images/placeholder.png' %}" alt="Image non disponible" style="width: 50px;">
+                            {% endif %}
+                            {{article.produit.name}}
+                        </td>
                         <td class="align-middle">{{article.produit.price|floatformat:2}} FCFA</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
