@@ -38,8 +38,12 @@ SECRET_KEY = "django-insecure-ns-x!g2q4q1zysw3ohq#i9s-&e49r8^q&5+av5r+mue39#)!%&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'tradishop.ci,www.tradishop.ci,localhost,127.0.0.1').split(',')
-
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'tradishop.ci,www.tradishop.ci,localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    "tradishop.ci",                # ton domaine personnalisé
+    "www.tradishop.ci",            # avec www
+    "tradishop.onrender.com",  # le subdomain Render
+]
 
 # Email settings - configuration pour la réinitialisation de mot de passe
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
