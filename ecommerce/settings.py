@@ -15,7 +15,7 @@ from pathlib import Path
 from .info import *
 from dotenv import load_dotenv
 from decouple import config
-# import dj_database_url
+import dj_database_url
 
 load_dotenv()
 
@@ -131,11 +131,17 @@ WSGI_APPLICATION = "ecommerce.wsgi.application"
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default="postgresql://tradishop_user:AxUkVZZBM2JtbO2aEPCvtWRTRwow4Fqc@dpg-d3lmqhhr0fns73e4ihf0-a.oregon-postgres.render.com/tradishop"
+    )
 }
 
 # Configuration PostgreSQL pour la production (Render)
